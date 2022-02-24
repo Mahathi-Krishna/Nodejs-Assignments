@@ -1,0 +1,17 @@
+[
+    {
+        "ProjectId" : 1,
+        "ProjectName" : "Winterfell",
+        "Location" : "North"
+    },
+    {
+        "ProjectId" : 2,
+        "ProjectName" : "King's Landing",
+        "Location" : "South"
+    },
+    {
+        "ProjectId" : 3,
+        "ProjectName" : "Dragonstone",
+        "Location" : "East"
+    }
+]

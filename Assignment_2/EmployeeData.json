@@ -1,0 +1,56 @@
+[
+    {
+        "EmpId" : "1000",
+        "EmpName" : "John Snow",
+        "Gender" : "Male",
+        "ProjectId" : 1
+    },
+    {
+        "EmpId" : "1001",
+        "EmpName" : "Robb Stark",
+        "Gender" : "Male",
+        "ProjectId" : 1
+    },
+    {
+        "EmpId" : "2000",
+        "EmpName" : "Jaime Lannister",
+        "Gender" : "Male",
+        "ProjectId" : 2
+    },
+    {
+        "EmpId" : "3000",
+        "EmpName" : "Daenerys Targaryen",
+        "Gender" : "Female",
+        "ProjectId" : 3
+    },
+    {
+        "EmpId" : "3001",
+        "EmpName" : "Aemon Targaryen",
+        "Gender" : "Male",
+        "ProjectId" : 3
+    },
+    {
+        "EmpId" : "2001",
+        "EmpName" : "Tyrion Lannister",
+        "Gender" : "Male",
+        "ProjectId" : 2
+    },
+    {
+        "EmpId" : "2002",
+        "EmpName" : "Cersei Lannister",
+        "Gender" : "Female",
+        "ProjectId" : 2
+    },
+    {
+        "EmpId" : "2003",
+        "EmpName" : "Tywin Lannister",
+        "Gender" : "Male",
+        "ProjectId" : 2
+    },
+    {
+        "EmpId" : "1002",
+        "EmpName" : "Theon Greyjoy",
+        "Gender" : "Male",
+        "ProjectId" : 1
+    }
+]
