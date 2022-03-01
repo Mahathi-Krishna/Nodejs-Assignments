@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Mahathi-Krishna/Nodejs-Assignments#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "request": "^2.88.2"
   }
 }
