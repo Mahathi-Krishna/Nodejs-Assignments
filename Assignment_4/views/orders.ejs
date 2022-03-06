@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
+  <title>All Orders</title>
   <link rel="stylesheet" href="../public/styles/style.css">
 </head>
 <body>
@@ -12,50 +12,36 @@
 <div class="container">
   <br>
   <div class="row">
-    <div class="col-md-9"></div>
-    <div class="col-md-3">
-      <form action="/" method="post">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name : </label>
-          <input type="text" class="form-control" name="name" placeholder="Enter Your Name">
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email : </label>
-          <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
-        </div>
-        <div class="mb-3">
-          <label for="address" class="form-label">Address : </label>
-          <input type="text" class="form-control" name="address" placeholder="Enter Your Address">
-        </div>
-        <div class="mb-3">
-          <label for="item" class="form-label">Select Items : </label>
-          <div class="mb-31">
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="IPhone11" name="item">
-                <label class="form-check-label" for="flexCheckChecked">
-                  IPhone11
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="IPhone12" name="item">
-                <label class="form-check-label" for="flexCheckChecked">
-                  IPhone12
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="IPhone13" name="item">
-                <label class="form-check-label" for="flexCheckChecked">
-                  IPhone13
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mb-3">
-          <input type="submit" value="Place Order" class="btn btn-primary">
-        </div>
-      </form>
+    <div class="col-md-12">
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Items</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            </th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% for(var i=0; i < result.length; i++) { %>
+          <tr>
+            <td><%= result[i].name %></td>
+            <td><%= result[i].email %></td>
+            <td><%= result[i].address %></td>
+            <td><%= result[i].item %></td>
+            <td><%= result[i].orderDate.toDateString() %></td>
+            <td><%= result[i].status %></td>
+            <% if (result[i].status == "Dispatched") { %>
+              <td><input type="button" name="sendEmail" value="Send Email" class="btn btn-primary"></td>
+            <% }; %>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

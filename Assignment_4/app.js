@@ -23,7 +23,7 @@ app.use(bodyparser.urlencoded({extended : false}));
 app.use("/admin", adminRouter);
 
 app.get("/", (req,res) => {
-    res.render("home");
+    res.render("home", {message: ""});
 });
 
 app.post("/", order);
