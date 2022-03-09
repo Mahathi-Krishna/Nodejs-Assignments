@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style-dp.css">
+</head>
+<body>
+  <%- include('header') %>
+
+  <div class="container" style="min-height: 430px;">
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <% if (message.msg) { %>
+          <div class="row alert alert-success" role="alert"><%= message.msg %></div>
+        <% } %>
+      </div>
+      <div class="col-md-3">
+        <form action="/user/login" method="post">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email : </label>
+            <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password : </label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+          </div>
+          <div class="mb-3">
+            <input type="submit" name="submit" class="btn btn-primary" style="font-family: serif;">
+          </div>
+          <div class="mb-3">
+            <p class="form-label">Not a user ? <a href="/user/register" class="form-label">Register</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+  
+  <%- include('footer') %>
+
+</body>
+</html>
