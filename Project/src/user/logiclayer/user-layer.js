@@ -1,3 +1,4 @@
+const express = require("express");
 const db = require("../../../mongodb");
 
 exports.getUserbyEmail = (email, cb) => {
@@ -20,4 +21,25 @@ exports.addUser = (model, cb) => {
         () => { cb(); },
         (err) => { cb(err); }
     );
+};
+
+exports.updateUser = (model, emailToUpdate, cb) => {
+    const filter = {email: emailToUpdate};
+    const data = { $set: { name: model.name, email: model.email, password: model.password, isAdmin: model.isAdmin } };
+    const collection = db.getCollection("user");
+    collection.findOneAndUpdate(filter, data)
+        .then(
+            () => { cb(); },
+            (err) => { cb(err); }
+        );
+};
+
+exports.deleteUser = (emailToDelete, cb) => {
+    const filter = {email: emailToDelete};
+    const collection = db.getCollection("user");
+    collection.deleteOne(filter)
+        .then(
+            () => { cb(); },
+            (err) => { cb(err); }
+        );
 };

@@ -7,7 +7,7 @@
   <title>Home</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body onload= <% if (message) { %> myFunction() <% } %>>
 
 <%- include('admin-header') %>
 
@@ -37,8 +37,6 @@
         <label class="form-check-label" style="padding-right: 10px;" for="isadmin">
           Yes
         </label>
-      <!-- </div> -->
-      <!-- <div class="form-check"> -->
         <input class="form-check-input" type="radio" name="isadmin" id="isadmin" value="N" checked>
         <label class="form-check-label" for="isadmin">
           No
@@ -52,7 +50,7 @@
 
   <div class="col-md-1"></div>
   <div class="col-md-3">
-    <h3 class="navbar-brand"">Modify a User:</h3><br>
+    <h3 class="navbar-brand"">Update a User:</h3><br>
 
     <form action="/admin/finduser" method="post">
       <div class="mb-3">
@@ -65,17 +63,10 @@
     </form>
   </div>
 
-  <% if (message) { %>
-    <div class="col-md-3">
-      <br><br><br><br>
-      <div class="form-label alert alert-success"><%= message %></div>
-    </div>
-  <% } %>
-
   <% if (user) { %>
   <div class="col-md-3">
     <br><br><br>
-    <form action="/admin/updateUser" method="post">
+    <form action="/admin/updateuser" method="post">
       <div class="mb-3">
         <label for="name" class="form-label">Name : </label>
         <input type="text" class="form-control" name="name" value= <%= user.name %>>
@@ -86,21 +77,30 @@
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password : </label>
-        <input type="text" class="form-control" name="password" value= <%= user.password %>>
+        <input type="password" class="form-control" name="password" value= <%= user.password %>>
       </div>
       <div class="form-check-label" style="margin-bottom: 10px;">
-        <label class="form-check-label" style="padding-right: 10px;">Is Admin ?</label>
+        <label class="form-check-label" style="padding-right: 10px;">Is Admin ? : </label>
         <input class="form-check-input" type="radio" name="isadmin" id="isadmin" value="Y" <% if(user.isAdmin=="Y"){ %> checked <% } %>>
         <label class="form-check-label" style="padding-right: 10px;" for="isadmin">
           Yes
         </label>
-      <!-- </div> -->
-      <!-- <div class="form-check"> -->
         <input class="form-check-input" type="radio" name="isadmin" id="isadmin" value="N" <% if(user.isAdmin=="N"){ %> checked <% } %>>
         <label class="form-check-label" for="isadmin">
           No
         </label>
       </div>
+      <div class="form-check-label" style="margin-bottom: 10px;">
+        <label class="form-check-label" style="padding-right: 10px;">Delete User ? : </label>
+        <input class="form-check-input" type="radio" name="isdelete" id="isdelete" value="Y">
+        <label class="form-check-label" style="padding-right: 10px;" for="isdelete">
+          Yes
+        </label>
+        <input class="form-check-input" type="radio" name="isdelete" id="isdelete" value="N" checked>
+        <label class="form-check-label" for="isdelete">
+          No
+        </label>
+      </div>      
       <div class="mb-3">
         <input type="submit" value="Update" class="btn btn-primary">
       </div>
@@ -113,6 +113,12 @@
 </div>
 
 <%- include('footer') %>
+
+<script>
+  function myFunction() {
+    alert("<%= message %>");
+  }
+</script>
 
 </body>
 </html>

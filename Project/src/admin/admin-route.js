@@ -8,10 +8,8 @@ router.get("/", (req,res) => {
 
 router.post("/finduser", adminController.findUser);
 
-router.post("/register", );
+router.post("/register", adminController.registerUser);
 
-
-
-
+router.post("/updateuser", adminController.updateUser);
 
 module.exports = router;
