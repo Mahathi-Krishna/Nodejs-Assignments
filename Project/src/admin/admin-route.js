@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const adminController = require("./controller/admin-controller");
 
 router.get("/", (req,res) => {
-    res.render("admin-home", {user : ""});
+    res.render("admin-home", {user : "", message : ""});
 });
 
-router.post("/finduser", );
+router.post("/finduser", adminController.findUser);
 
 router.post("/register", );
 

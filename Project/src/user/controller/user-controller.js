@@ -14,7 +14,7 @@ exports.loginUser = (req,res) => {
         }
         else if (userObj && userObj.password == req.body.password) {
             if(userObj.isAdmin == 'Y') {
-                res.render("admin-home");
+                res.redirect("/admin");
             }
             else if(userObj.isAdmin == 'N') {
                 req.session.authenticated = true;
