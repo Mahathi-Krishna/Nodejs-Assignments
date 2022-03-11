@@ -7270,6 +7270,10 @@ fieldset:disabled .btn {
   --bs-bg-opacity: 1;
   background-color: white !important;
 }
+.bg-light1 {
+  --bs-bg-opacity: 1;
+  background-color: orange !important;
+}
 .bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;

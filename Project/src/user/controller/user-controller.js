@@ -13,9 +13,14 @@ exports.loginUser = (req,res) => {
             res.render("user-login", { result: message });
         }
         else if (userObj && userObj.password == req.body.password) {
-            req.session.authenticated = true;
-            req.session.user = userObj;
-            res.render("home");
+            if(userObj.isAdmin == 'Y') {
+                res.render("admin-home");
+            }
+            else if(userObj.isAdmin == 'N') {
+                req.session.authenticated = true;
+                req.session.user = userObj;
+                res.render("home");
+            }
         }
     });
 };
