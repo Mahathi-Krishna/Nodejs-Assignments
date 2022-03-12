@@ -1,4 +1,3 @@
-const express = require("express");
 const db = require("../../../mongodb");
 
 exports.getUserbyEmail = (email, cb) => {

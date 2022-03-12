@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body onload= <% if (message) { %> myFunction() <% } %>>
+
+<%- include('admin-header') %>
+
+<div class="container" style="min-height: 550px;">
+<br>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <form action="/admin/addnews" method="post">
+            <div class="row">
+                <div class="col">
+                    <label for="title" class="form-label">Title : </label>
+                    <input type="text" class="form-control" name="title" placeholder="Enter the Title">
+                  </div>
+                  <div class="col">
+                    <label for="image" class="form-label">Image : </label>
+                    <input type="text" class="form-control" name="image" placeholder="Enter the Image Link">
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre : </label>
+                <input type="text" class="form-control" name="genre" placeholder="Enter the Genre"></input>
+              </div>
+            <div class="mb-3">
+              <label for="detail" class="form-label">Detail : </label>
+              <textarea class="form-control" name="detail" rows="10" cols="50" wrap="soft" placeholder="Enter the Details"></textarea>
+            </div>
+            <div class="mb-3">
+              <input type="submit" value="Insert" class="btn btn-primary">
+            </div>
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+      </div>
+    </div>
+</div>
+
+<%- include('footer') %>
+
+<script>
+  function myFunction() {
+    alert("<%= message %>");
+  }
+</script>
+
+</body>
+</html>

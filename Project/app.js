@@ -31,6 +31,8 @@ app.use(bodyparser.urlencoded({extended : false}));
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 
+app.use("/news", newsRouter);
+
 app.get("/", (req,res) => {
     res.render("home");
 });
