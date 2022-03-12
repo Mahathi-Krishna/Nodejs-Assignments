@@ -16,6 +16,10 @@ exports.addNews = (req,res) => {
     });
 };
 
+exports.allNews = (req,res) => {
+    newsLayer.getAllNews(res);
+};
+
 exports.allSports = (req,res) => {
     newsLayer.getAllSports(res);
 };

@@ -19,4 +19,16 @@ router.get("/addnews", (req,res) => {
 
 router.post("/addnews", newsController.addNews);
 
+router.get("/editnews", newsController.allNews);
+
+router.post("/editnews", (req,res) => {
+    console.log("Post-Edit");
+    console.log(req.body);
+});
+
+router.post("/deletenews", (req,res) => {
+    console.log("Post-Delete");
+    console.log(req.body);
+});
+
 module.exports = router;

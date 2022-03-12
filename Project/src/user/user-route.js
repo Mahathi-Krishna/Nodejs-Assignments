@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("./controller/user-controller");
-const sessionAuth = require("../middlewares/session-auth");
 
 router.get("/login", (req,res) => {
     res.render("user-login", {message: ""});
