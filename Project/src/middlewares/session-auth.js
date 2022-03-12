@@ -4,7 +4,8 @@ const sessionAuth = (req,res,next) => {
         next();
     }
     else {
-        console.log("Invalid Session");
+        const message = { msg: "Please Log-in to continue..."};
+        res.render("user-login", {message});
     }
 };
 

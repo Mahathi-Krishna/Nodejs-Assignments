@@ -15,3 +15,7 @@ exports.addNews = (req,res) => {
         }
     });
 };
+
+exports.allSports = (req,res) => {
+    newsLayer.getAllSports(res);
+};

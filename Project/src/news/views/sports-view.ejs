@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style-dp.css">
+  <style>
+      .mycard-img{
+          margin-left: 2px;
+          margin-top: 2px;
+          margin-bottom: 2px;
+          height: 250px;
+          width: auto;
+      }
+  </style>
+</head>
+<body>
+  <%- include('header') %>
+  <%- include('menu') %>
+
+  <div style="min-height: 600px;">
+    
+    <% result.forEach(content => { %>
+    <div class="card mb-3" style="width: 100%; height: 260px; overflow:hidden;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img class="card-img mycard-img" src="<%= content.image %>">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title"><b><%= content.title %></b></h3><br>
+              <p class="card-text"><%= content.detail %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <% }); %>
+
+  </div>
+  
+  <%- include('footer') %>
+
+</body>
+</html>

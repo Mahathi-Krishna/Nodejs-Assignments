@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/style-dp.css">
 </head>
-<body>
+<body onload= <% if (message.msg != "") { %> myFunction() <% } %>>
   <%- include('header') %>
 
   <div class="container" style="min-height: 430px;">
     <br>
     <div class="row">
       <div class="col-md-8">
-        <% if (message.msg) { %>
+        <!-- <% if (message.msg) { %>
           <div class="row alert alert-success" role="alert"><%= message.msg %></div>
-        <% } %>
+        <% } %> -->
       </div>
       <div class="col-md-3">
         <form action="/user/login" method="post">
@@ -42,6 +42,11 @@
   </div>
   
   <%- include('footer') %>
+  <script>
+    function myFunction() {
+      alert("<%= message.msg %>");
+    }
+  </script>
 
 </body>
 </html>

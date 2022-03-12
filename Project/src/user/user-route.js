@@ -15,8 +15,4 @@ router.post("/login", userController.loginUser);
 
 router.post("/register", userController.registerUser);
 
-router.get("/trending", sessionAuth, (req,res) => {
-    res.render("home");
-})
-
 module.exports = router;
