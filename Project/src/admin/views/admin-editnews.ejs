@@ -32,19 +32,17 @@
         <tbody style="min-height: 30px; overflow: hidden;">
           <% for(var i=0; i < result.length; i++) { %>
           <tr>
-          <form class="form-inline form-selection" id="selectForm" name="selectForm">
+          <form class="form-inline form-selection" id="selectForm" name="selectForm" method="post">
             <td><%= i+1 %></td>
             <td><textarea id="title" name ="title" class="form-control" rows="5" cols="30"><%= result[i].title %></textarea></td>
             <td><textarea id="detail" name ="detail" class="form-control" rows="5" cols="50"><%= result[i].detail %></textarea></td>
             <td><textarea id="image" name ="image" class="form-control" rows="5" cols="20"><%= result[i].image %></textarea></td>
             <td><textarea id="created" name ="created" class="form-control" rows="5"><%= result[i].created %></textarea></td>
             <td>
-              <button type="submit" id="btnedit" onClick=editFunction() class="btn btn-primary">Edit</button>
-              <!-- <input type="submit" name="editbutton" id="<%= result[i]._id %>" onclick="editFunction()" value="Edit" class="btn btn-primary"> -->
+              <a href="/admin/edit/<%= result[i]._id %>" class="btn btn-primary">Update</a>
             </td>
             <td>
-              <button type="submit" id="btndelete" class="btn btn-primary" style="background-color: red;">Delete</button>
-              <!-- <input type="submit" name="deletebutton" id="<%= result[i]._id %>" onclick="deleteFunction()" value="Delete" class="btn btn-primary" style="background-color: red;"> -->
+              <a href="/admin/deletenews/<%= result[i]._id %>" class="btn btn-primary" style="background-color: red;"</style>Delete</a>
             </td>
           </form>
           </tr>
@@ -66,54 +64,6 @@
         alert("<%= message %>");
       };
     </script>
-
-<script>
-  function editFunction() {
-    const selectForm = document.getElementById('btnedit');
-      selectForm.addEventListener('click', (e)=>{
-          // e.preventDefault();
-
-          var title = document.getElementById('title').value;
-          var detail = document.getElementById('detail').value;
-          var image = document.getElementById('image').value;
-          var created = document.getElementById('created').value;
-
-          var payload = {
-            title: title,
-            detail: detail,
-            image: image,
-            created:created
-          };
-
-          // DO POST
-          $.ajax({
-              type : "POST",
-              url : "/admin/editnews",
-              contentType : "application/json",
-              data : JSON.stringify(payload),
-              dataType : "json",  
-          }).done(function(data){
-                console.log(data.title);
-                alert(data.title);
-              return;
-          });
-      });
-  };
-</script>
-
-    <!-- <script>
-      function editFunction() {
-        let vare = document.getElementsByName("id").values;
-        alert("Clicked this id:"+vare);
-        };
-    </script>
-
-    <script>
-      function deleteFunction() {
-        let vare = document.getElementsByName("id").values;
-        alert("Clicked this id:"+vare);
-      };
-    </script> -->
 
 </body>
 </html>

@@ -1,6 +1,5 @@
 const mongoDb = require("./mongodb");
 const { ObjectId } = require("mongodb");
-const { is } = require("express/lib/request");
 
 exports.AllMovies = (req,res) =>  {
     const dbCollection = mongoDb.getCollection("movies");

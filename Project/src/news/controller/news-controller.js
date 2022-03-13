@@ -1,6 +1,8 @@
 const newsModel = require("../model/news-model");
 const newsLayer = require("../logiclayer/news-layer");
 
+var newsId;
+
 exports.addNews = (req,res) => {
     const news = new newsModel(req.body.title, req.body.image, req.body.genre, req.body.detail, new Date());
     newsLayer.insertNews(news, (err) => {
@@ -22,4 +24,21 @@ exports.allNews = (req,res) => {
 
 exports.allSports = (req,res) => {
     newsLayer.getAllSports(res);
+};
+
+exports.newsById = (req,res) => {
+    newsId = req.params.id;
+    newsLayer.getNewsById(newsId, (data) => {
+        res.render("admin-addnews", {news: data, message : ""});
+    });
+};
+
+exports.updateNews = (req,res) => {
+    const news = new newsModel(req.body.title, req.body.image, req.body.genre, req.body.detail, new Date());
+    newsLayer.updNews(news, newsId, res);
+}
+
+exports.deleteNews = (req,res) => {
+    const newsToDelete = req.params.id;
+    newsLayer.delNews(newsToDelete, res);
 };

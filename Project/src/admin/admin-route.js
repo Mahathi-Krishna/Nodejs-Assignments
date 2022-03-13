@@ -4,7 +4,7 @@ const adminController = require("./controller/admin-controller");
 const newsController = require("../news/controller/news-controller");
 const bodyparser = require("body-parser");
 
-router.use(bodyparser.json());
+router.use(bodyparser.urlencoded({extended: false}));
 
 router.get("/", (req,res) => {
     res.render("admin-home", {user : "", message : ""});
@@ -17,23 +17,17 @@ router.post("/register", adminController.registerUser);
 router.post("/updateuser", adminController.updateUser);
 
 router.get("/addnews", (req,res) => {
-    res.render("admin-addnews", {message : ""});
+    res.render("admin-addnews", {news: "", message : ""});
 });
 
 router.post("/addnews", newsController.addNews);
 
 router.get("/editnews", newsController.allNews);
 
-router.post("/editnews", (req,res) => {
-    console.log("Post-Edit");
-    var data = req.body;
+router.get("/edit/:id", newsController.newsById);
 
-    console.log(data.created);
-});
+router.post("/editnews", newsController.updateNews);
 
-router.post("/deletenews", (req,res) => {
-    console.log("Post-Delete");
-    console.log(req.body);
-});
+router.get("/deletenews/:id", newsController.deleteNews);
 
 module.exports = router;
