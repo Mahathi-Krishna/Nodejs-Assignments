@@ -8,7 +8,8 @@ exports.insertNews = (model, cb) => {
         image: model.image,
         genre: model.genre,
         detail: model.detail,
-        created: model.date
+        created: model.date,
+        istrending: model.istrending
     }).then(
         () => { cb(); },
         (err) => { cb(err); }
@@ -36,6 +37,32 @@ exports.getAllSports = (res) => {
         else {
             var result = jsonResult;
             res.render("sports-view", {result});
+        }
+    });
+};
+
+exports.getAllTrending = (res) => {
+    const collection = db.getCollection("news");
+    const filter = {istrending: "Y"};
+    
+    collection.find(filter).toArray((err,jsonResult) => {
+        if(err) {console.log(err);}
+        else {
+            var result = jsonResult;
+            res.render("trending-view", {result});
+        }
+    });
+};
+
+exports.getWorldNews = (res) => {
+    const collection = db.getCollection("news");
+    const filter = {genre: "World"};
+    
+    collection.find(filter).toArray((err,jsonResult) => {
+        if(err) {console.log(err);}
+        else {
+            var result = jsonResult;
+            res.render("world-view", {result});
         }
     });
 };

@@ -4,16 +4,16 @@ const newsLayer = require("../logiclayer/news-layer");
 var newsId;
 
 exports.addNews = (req,res) => {
-    const news = new newsModel(req.body.title, req.body.image, req.body.genre, req.body.detail, new Date());
+    const news = new newsModel(req.body.title, req.body.image, req.body.genre, req.body.detail, new Date(), "N");
     newsLayer.insertNews(news, (err) => {
         if(err) {
             message = "Unable to Insert News, Please try again...";
             console.log(err);
-            res.render("admin-addnews", { message });
+            res.render("admin-addnews", { news: "", message: message });
         }
         else {
             message = "1 News Inserted..!";
-            res.render("admin-addnews", { message });
+            res.render("admin-addnews", { news: "", message: message });
         }
     });
 };
@@ -24,6 +24,14 @@ exports.allNews = (req,res) => {
 
 exports.allSports = (req,res) => {
     newsLayer.getAllSports(res);
+};
+
+exports.allTrending = (req,res) => {
+    newsLayer.getAllTrending(res);
+};
+
+exports.worldNews = (req,res) => {
+    newsLayer.getWorldNews(res);
 };
 
 exports.newsById = (req,res) => {
