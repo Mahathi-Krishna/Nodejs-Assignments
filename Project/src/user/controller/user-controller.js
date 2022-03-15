@@ -19,7 +19,7 @@ exports.loginUser = (req,res) => {
             else if(userObj.isAdmin == 'N') {
                 req.session.authenticated = true;
                 req.session.user = userObj;
-                res.render("home");
+                res.redirect("/");
             }
         }
     });

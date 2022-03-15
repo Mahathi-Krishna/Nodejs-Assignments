@@ -127,3 +127,26 @@ exports.delNews = (newsId, res) => {
         }
     );
 };
+
+exports.gethomepage = (res) => {
+    const collection = db.getCollection("news");
+    const filter_trend = {istrending: "Y"};
+    const filter_world = {genre: "World"};
+
+    var result_trend, result_world;
+
+    collection.find(filter_trend).toArray((err,trendingResult) => {
+        if(err) {console.log(err);}
+        else {
+            result_trend = trendingResult;
+
+            collection.find(filter_world).toArray((err,worldResult) => {
+                if(err) {console.log(err);}
+                else {
+                    result_world = worldResult;
+                    res.render("home", {trend: result_trend, world: result_world});
+                };
+            });            
+        };
+    });
+};

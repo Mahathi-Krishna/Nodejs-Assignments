@@ -50,3 +50,7 @@ exports.deleteNews = (req,res) => {
     const newsToDelete = req.params.id;
     newsLayer.delNews(newsToDelete, res);
 };
+
+exports.homepage = (req,res) => {
+    newsLayer.gethomepage(res);
+};

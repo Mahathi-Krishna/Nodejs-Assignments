@@ -9,9 +9,16 @@ const adminRouter = require("./src/admin/admin-route");
 const newsRouter = require("./src/news/news-route");
 const sessionAuth = require("./src/middlewares/session-auth");
 
+const newsController = require("./src/news/controller/news-controller");
+
 const port = 3000;
 
 const app = express();
+
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`);
+});
+
 mongoDb.connect();
 
 app.use(bodyparser.urlencoded({extended: false}));
@@ -35,10 +42,4 @@ app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/news", sessionAuth, newsRouter);
 
-app.get("/", (req,res) => {
-    res.render("home");
-});
-
-app.listen(port, () => {
-    console.log(`Listening to port ${port}`);
-});
+app.get("/", newsController.homepage);

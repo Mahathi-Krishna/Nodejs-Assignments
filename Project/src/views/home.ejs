@@ -12,11 +12,74 @@
   <%- include('header') %>
   <%- include('menu') %>
 
-  <div style="min-height: 600px;">
+  <div style="min-height: 600px; width: 100%;">
+    
+    <div class="card mb-3 newcard" style="width: 100%; height: 260px; overflow:hidden; border-radius: 5px;">
+        <img class="image" src="/images/sun-clouds.jpg" alt="Sun-n-Clouds" style="width:100%">
+        <div class="middle">
+          <div class="text"><b>Weather</b></div>
+        </div>
+    </div>
+
+    <h2>Trending: </h2>
+    <div class="card mb-3" style="width: 100%; height: 260px; overflow:hidden; border-radius: 5px;">
+      <% for(var i=0; i < trend.length; i++) { %>
+      <div class="mySlides mySlides-trend fade">
+        <div class="row">
+        <div class="col-md-4">
+          <div class="numbertext"><%= i+1 %>/<%= trend.length %></div>
+          <img src="<%= trend[i].image %>" style="height: 260px; width: auto; border-radius: 5px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-text"><b><%= trend[i].title %></b></h3><br>
+          </div>
+        </div>
+        </div>
+      </div>
+      <% } %>
+      <a class="prev" onclick="plusTrendSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusTrendSlides(1)">&#10095;</a>
+    </div>
+    <div style="text-align:center">
+      <% for(var i=0; i < trend.length; i++) { %>
+      <span class="dot dot-trend" onclick="currentTrendSlide('<%= i+1 %>')"></span>
+      <% } %>
+    </div>
+
+    <h2>World News: </h2>
+    <div class="card mb-3" style="width: 100%; height: 260px; overflow:hidden; border-radius: 5px;">
+      <% for(var j=0; j < world.length; j++) { %>
+      <div class="mySlides mySlides-world">
+        <div class="row">
+        <div class="col-md-4">
+          <div class="numbertext"><%= j+1 %>/<%= world.length %></div>
+          <img src="<%= world[j].image %>" style="height: 260px; width: auto; border-radius: 5px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-text"><b><%= world[j].title %></b></h3><br>
+          </div>
+        </div>
+        </div>
+      </div>
+      <% } %>
+      <a class="prev" onclick="plusWorldSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusWorldSlides(1)">&#10095;</a>
+    </div>
+    <div style="text-align:center">
+      <% for(var j=0; j < world.length; j++) { %>
+      <span class="dot dot-world" onclick="currentWorldSlide('<%= j+1 %>')"></span>
+      <% } %>
+    </div>
 
   </div>
   
   <%- include('footer') %>
 
 </body>
+
+<script src="/js/autoslidetrend.js"></script>
+<script src="/js/autoslideworld.js"></script>
+
 </html>
